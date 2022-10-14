@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
 const Tasks = ({ arr }) => {
   const [done, setDone] = useState(false);
   const style = {
