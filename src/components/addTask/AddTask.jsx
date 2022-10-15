@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
 const AddTask = ({ input, setInput }) => {
-  // const { task, date } = input;
   const [addTask, setAddTask] = useState("");
   const [addDate, setAddDate] = useState("");
   return (

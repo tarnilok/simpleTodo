@@ -12,8 +12,8 @@ const Tasks = ({ task, input, setInput }) => {
         //   ),
         //   setInput([...input])
         // )
-        setInput(
-          input.map((item) =>
+        setInput((list) =>
+          list.map((item) =>
             item.id === task.id
               ? { ...item, isDone: !item.isDone }
               : { ...item }
