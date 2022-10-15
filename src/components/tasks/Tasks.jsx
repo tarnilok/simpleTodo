@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 const Tasks = ({ task, input, setInput }) => {
   const style = {
     borderLeft: task.isDone ? "4px solid red" : "none",
@@ -14,9 +13,10 @@ const Tasks = ({ task, input, setInput }) => {
         //   setInput([...input])
         // )
         setInput(
-          input.map(
-            (item) =>
-              item.id === task.id && [...{ ...item, isDone: !item.isDone }]
+          input.map((item) =>
+            item.id === task.id
+              ? { ...item, isDone: !item.isDone }
+              : { ...item }
           )
         )
       }
@@ -30,7 +30,7 @@ const Tasks = ({ task, input, setInput }) => {
       </span>
 
       <button
-        onClick={(e) => e.target.parentNode.remove()}
+        onClick={() => setInput(input.filter((todo) => todo.id !== task.id))}
         type="button"
         className="btn-close"
         aria-label="Close"
