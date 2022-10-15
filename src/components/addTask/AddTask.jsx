@@ -1,13 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 
-const AddTask = ({ input, setInput, setSaveClick }) => {
-  const { task, date } = input;
+const AddTask = ({ input, setInput }) => {
+  // const { task, date } = input;
+  const [addTask, setAddTask] = useState("");
+  const [addDate, setAddDate] = useState("");
   return (
     <div className="mt-3">
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          setSaveClick(true);
+          setInput([
+            ...input,
+            { id: Date.now(), isDone: false, task: addTask, date: addDate },
+          ]);
+          console.log(e.target);
         }}
       >
         <div className="mb-3">
@@ -15,8 +21,8 @@ const AddTask = ({ input, setInput, setSaveClick }) => {
             Task
           </label>
           <input
-            onChange={(e) => setInput({ ...input, task: e.target.value })}
-            value={task}
+            onChange={(e) => setAddTask(e.target.value)}
+            value={addTask}
             type="text"
             className="form-control"
             id="task"
@@ -30,8 +36,11 @@ const AddTask = ({ input, setInput, setSaveClick }) => {
             Day & Time
           </label>
           <input
-            onChange={(e) => setInput({ ...input, date: e.target.value })}
-            value={date}
+            onChange={(e) => {
+              setAddDate(e.target.value);
+              console.log(e.target);
+            }}
+            value={addDate}
             type="text"
             className="form-control"
             id="date"
