@@ -1,4 +1,6 @@
 .container-fluid {
   background-color: bisque;
   height: 100vh;
+  padding-top: 50px;
+  padding-bottom: 50px;
 }

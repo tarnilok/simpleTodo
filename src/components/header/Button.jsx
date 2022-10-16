@@ -3,7 +3,9 @@ const Button = ({ setToggle, toggle }) => {
     <button
       onClick={() => setToggle(!toggle)}
       className={
-        toggle ? "btn btn-danger mt-3 mb-4" : "btn btn-success mt-3 mb-4"
+        toggle
+          ? "btn btn-danger mt-3 mb-4 w-50 mx-auto"
+          : "btn btn-success mt-3 mb-4 w-50 mx-auto"
       }
     >
       {toggle ? "Close" : "Open"} Add Task Bar

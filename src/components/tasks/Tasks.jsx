@@ -5,36 +5,29 @@ const Tasks = ({ task, input, setInput }) => {
   };
   return (
     <li
-      onClick={() =>
-        // (
-        //   input.map((item) =>
-        //     item.id === task.id ? (item.isDone = !item.isDone) : null
-        //   ),
-        //   setInput([...input])
-        // )
-        setInput((list) =>
-          list.map((item) =>
-            item.id === task.id
-              ? { ...item, isDone: !item.isDone }
-              : { ...item }
-          )
-        )
-      }
       key={task.id}
       style={style}
-      className="bg-white p-3 list-unstyled d-flex justify-content-between "
+      className="bg-white list-unstyled d-flex p-3 gap-3"
     >
-      <span>
-        <strong>{task.task}</strong> <br />
-        {task.date}
-      </span>
+      <div
+        onClick={() => {
+          const index = input.findIndex((item) => item.id === task.id);
+          input[index].isDone = !input[index].isDone;
+          setInput([...input]);
+        }}
+        className="flex-grow-1 d-flex flex-column align-items-start"
+      >
+        <div style={{ fontWeight: "bold" }}>{task.task}</div>
+        <div>{task.date}</div>
+      </div>
 
       <button
         onClick={() => setInput(input.filter((todo) => todo.id !== task.id))}
         type="button"
         className="btn-close"
+        style={{ filter: "red" }}
         aria-label="Close"
-      ></button>
+      />
     </li>
   );
 };

@@ -1,54 +1,69 @@
-import React, { useState } from "react";
+import React from "react";
 
 const AddTask = ({ input, setInput }) => {
-  const [addTask, setAddTask] = useState("");
-  const [addDate, setAddDate] = useState("");
   return (
     <div className="mt-3">
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          setInput([
-            ...input,
-            { id: Date.now(), isDone: false, task: addTask, date: addDate },
-          ]);
-          console.log(e.target);
+          const { task, date } = e.target;
+          let dateData = date.value.replace("T", " ");
+          const isPast = Date.now() > new Date(date.value).getTime();
+          console.log(isPast);
+          if (task.value && date.value && !isPast)
+            setInput([
+              ...input,
+              {
+                id: Date.now(),
+                isDone: false,
+                task: task.value,
+                date: dateData,
+              },
+            ]);
+          !task.value
+            ? (task.style.outline = "3px solid blue")
+            : (task.style.outline = "");
+          !date.value || isPast
+            ? (date.style.outline = "3px solid blue")
+            : (date.style.outline = "");
+          if (task.value && date.value && !isPast) {
+            date.value = "";
+            task.value = "";
+          }
         }}
+        noValidate
       >
         <div className="mb-3">
-          <label htmlFor="task" className="form-label">
+          <label htmlFor="task" className="form-label w-100">
             Task
           </label>
           <input
-            onChange={(e) => setAddTask(e.target.value)}
-            value={addTask}
             type="text"
             className="form-control"
-            id="task"
+            name="task"
             aria-describedby="taskHelp"
             placeholder="Add Task"
             required
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="date" className="form-label">
+          <label htmlFor="date" className="form-label w-100 text-left">
             Day & Time
           </label>
           <input
-            onChange={(e) => {
-              setAddDate(e.target.value);
-              console.log(e.target);
-            }}
-            value={addDate}
-            type="text"
+            type="datetime-local"
             className="form-control"
-            id="date"
+            name="date"
             placeholder="Add Day & Time"
             required
           />
         </div>
 
-        <button type="submit" className="btn btn-warning w-100 mb-4 mt-3">
+        <button
+          type="submit"
+          className="btn w-100 mb-4 mt-3 text-white"
+          style={{ background: "#810089" }}
+        >
           Save Task
         </button>
       </form>
