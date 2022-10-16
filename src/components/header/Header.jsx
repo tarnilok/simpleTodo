@@ -2,6 +2,7 @@ import Button from "./Button";
 import React, { useState } from "react";
 import AddTask from "../addTask/AddTask";
 import Tasks from "../tasks/Tasks";
+import github from "../../assets/github.svg";
 
 const Header = () => {
   const [toggle, setToggle] = useState(true);
@@ -10,7 +11,7 @@ const Header = () => {
 
   return (
     <div
-      className="container d-flex flex-column  p-4 mh-100 rounded"
+      className="container d-flex flex-column  p-4 mh-100 rounded position-relative"
       style={{
         minWidth: "300px",
         maxWidth: "600px",
@@ -34,6 +35,18 @@ const Header = () => {
           No Tasks to Show
         </div>
       )}
+      <a
+        href="https://github.com/tarnilok/simpleTodo"
+        target="_blank"
+        rel="noreferrer"
+      >
+        <img
+          src={github}
+          alt="github-icon"
+          className="position-absolute"
+          style={{ hover: "cursor-pointer", top: "35px", width: "30px" }}
+        />
+      </a>
     </div>
   );
 };

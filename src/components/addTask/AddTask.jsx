@@ -8,8 +8,10 @@ const AddTask = ({ input, setInput }) => {
           e.preventDefault();
           const { task, date } = e.target;
           let dateData = date.value.replace("T", " ");
+
           const isPast = Date.now() > new Date(date.value).getTime();
           console.log(isPast);
+
           if (task.value && date.value && !isPast)
             setInput([
               ...input,
@@ -20,6 +22,7 @@ const AddTask = ({ input, setInput }) => {
                 date: dateData,
               },
             ]);
+            
           !task.value
             ? (task.style.outline = "3px solid blue")
             : (task.style.outline = "");
