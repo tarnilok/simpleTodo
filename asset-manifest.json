@@ -1,13 +1,14 @@
 {
   "files": {
     "main.css": "/simpleTodo/static/css/main.0369782c.css",
-    "main.js": "/simpleTodo/static/js/main.08e51816.js",
+    "main.js": "/simpleTodo/static/js/main.f467380a.js",
     "index.html": "/simpleTodo/index.html",
+    "static/media/github.svg": "/simpleTodo/static/media/github.81fe3d7e59686cd31f0854234fb9dad1.svg",
     "main.0369782c.css.map": "/simpleTodo/static/css/main.0369782c.css.map",
-    "main.08e51816.js.map": "/simpleTodo/static/js/main.08e51816.js.map"
+    "main.f467380a.js.map": "/simpleTodo/static/js/main.f467380a.js.map"
   },
   "entrypoints": [
     "static/css/main.0369782c.css",
-    "static/js/main.08e51816.js"
+    "static/js/main.f467380a.js"
   ]
 }
